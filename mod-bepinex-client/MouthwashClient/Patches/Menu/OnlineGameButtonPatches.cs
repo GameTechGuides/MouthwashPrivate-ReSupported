@@ -27,6 +27,7 @@ namespace MouthwashClient.Patches.Menu
             if (!LoginService.IsLoggedIn())
             {
                 DestroyableSingleton<DiscordManager>.Instance.discordPopup.Show($"<size=150%>You are not logged in, make\nsure you launch the game through\nthe launcher.</size>");
+                PluginSingleton<MouthwashClientPlugin>.Instance.Log.LogMessage("User Try to create game without being logged in ! .");
                 return false;
             }
             

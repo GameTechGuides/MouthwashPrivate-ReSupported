@@ -8,5 +8,17 @@
         "notes": [
             "Draft client rewrite release"
         ]
+    },
+
+    {
+    
+        "version": "2024.4.14",
+        "date_released": "2024-4-03T18:20:58.066Z",
+        "release_download_bytes": 30734996,
+        "release_download_sha256": "",
+        "release_url": "",
+        "notes": [
+            "Port Client to AU 2024.3.5 and some bugs + Long Mode Support (April fools)"
+        ]
     }
 ]

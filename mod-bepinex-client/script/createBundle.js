@@ -43,8 +43,8 @@ const baseMouthwashDllPath = path.join(__dirname, "../MouthwashClient/bin/Releas
     console.log("|- Release description:");
     console.log("  |- " + tagDescription.split("\n").join("\n  |- "));
 
-    console.log("Fetching bepinex BepInEx-Unity.IL2CPP-win-x86-6.0.0-be.670..");
-    const bepinexInstallResponse = await got.get("https://builds.bepinex.dev/projects/bepinex_be/671/BepInEx-Unity.IL2CPP-win-x86-6.0.0-be.671%2B9caf61d.zip", {
+    console.log("Fetching bepinex BepInEx-Unity.IL2CPP-win-x86-6.0.0-be.688..");
+    const bepinexInstallResponse = await got.get("https://builds.bepinex.dev/projects/bepinex_be/688/BepInEx-Unity.IL2CPP-win-x86-6.0.0-be.688%2B4901521.zip", {
         responseType: "buffer"
     });
 
@@ -52,7 +52,7 @@ const baseMouthwashDllPath = path.join(__dirname, "../MouthwashClient/bin/Releas
     console.log("|- Loading (%s MB)..", (bepinexInstallResponse.body.byteLength / 1024 / 1024).toFixed(2));
     await bundleZip.loadAsync(bepinexInstallResponse.body);
 
-    console.log("|- Adding pgg.dll..");
+    console.log("|- Adding pgg-supported.dll..");
     const mouthwashClientData = await fs.readFile(baseMouthwashDllPath);
     bundleZip.file("BepInEx/plugins/pgg.dll", mouthwashClientData);
     console.log("|- Added pgg.dll (%s MB)", (mouthwashClientData.byteLength / 1024 / 1024).toFixed(2));
@@ -67,8 +67,8 @@ const baseMouthwashDllPath = path.join(__dirname, "../MouthwashClient/bin/Releas
     bundleZip.file("BepInEx/plugins/Utf8Json.dll", utf8JsonResponse.body);
     console.log("|- Added Ut8fJson.dll (%s MB)", (utf8JsonResponse.body.byteLength / 1024 / 1024).toFixed(2));
     
-    console.log("|- Adding Submerged.dll..");
-    const submergedResponse = await got.get("https://github.com/SubmergedAmongUs/Submerged/releases/download/v2023.8.2/Submerged.dll", { responseType: "buffer" });
+    console.log("|- Adding Submerged(New Version).dll..");
+    const submergedResponse = await got.get("https://github.com/SubmergedAmongUs/Submerged/releases/download/v2024.3.25/Submerged.dll", { responseType: "buffer" });
     bundleZip.file("BepInEx/plugins/Submerged.dll", submergedResponse.body);
     console.log("|- Added Submerged.dll (%s MB)", (submergedResponse.body.byteLength / 1024 / 1024).toFixed(2));
 

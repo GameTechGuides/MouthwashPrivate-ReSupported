@@ -55,12 +55,14 @@ namespace MouthwashClient.Patches.OnlinePlay
         public static void UpdateHatMaterial(HatParent hat, HatViewData hatViewData, bool setColors, Color frontColor, Color backColor, Color visorColor)
         {
             // Reconstructed from: HatParent.cs
-            if (hatViewData && hatViewData.AltShader)
+            if (hatViewData && hatViewData.MatchPlayerColor)
             {
-                hat.FrontLayer.sharedMaterial = hatViewData.AltShader;
+                hat.FrontLayer.sharedMaterial =   DestroyableSingleton<HatManager>.Instance.MaskedPlayerMaterial;
+			
                 if (hat.BackLayer)
                 {
-                    hat.BackLayer.sharedMaterial = hatViewData.AltShader;
+                    hat.BackLayer.sharedMaterial =  DestroyableSingleton<HatManager>.Instance.MaskedPlayerMaterial;
+			
                 }
             }
             else
@@ -141,7 +143,7 @@ namespace MouthwashClient.Patches.OnlinePlay
                     }
 
                     __instance.UnloadAsset();
-                    __instance.hatDataAsset = null;	
+                    __instance.viewAsset = null;	
                     PopulateFromHatViewData(__instance, hatViewData);
                     if (color >= 0 && color < Palette.PlayerColors.Length)
                     {
@@ -183,7 +185,7 @@ namespace MouthwashClient.Patches.OnlinePlay
 			        }
 
 			        __instance.UnloadAsset();
-			        __instance.hatDataAsset = null;
+			        __instance.viewAsset = null;
 			        PopulateFromHatViewData(__instance, hatViewData);
 			        if (colorId >= 0 && colorId < Palette.PlayerColors.Length)
 			        {

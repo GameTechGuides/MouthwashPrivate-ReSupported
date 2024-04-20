@@ -228,20 +228,25 @@ namespace MouthwashClient.Patches.Lobby
 
         public static void SetVisorAppearanceColors(VisorLayer visor, Color frontColor, Color backColor, Color visorColor)
         {
-            if (visor.IsLoaded && visor.viewAsset.GetAsset().AltShader)
+            
+            if (visor.IsLoaded && visor.viewAsset.GetAsset().MatchPlayerColor)
             {
-                visor.Image.sharedMaterial = visor.viewAsset.GetAsset().AltShader;
+                visor.Image.sharedMaterial = DestroyableSingleton<HatManager>.Instance.PlayerMaterial;
             }
             else
             {
-                visor.Image.sharedMaterial = DestroyableSingleton<HatManager>.Instance.DefaultShader;
+                visor.Image.sharedMaterial = DestroyableSingleton<HatManager>.Instance.MaskedPlayerMaterial;
             }
             PlayerMaterial.SetColors(visor.matProperties.ColorId, visor.Image);
             PlayerMaterial.MaskType maskType = visor.matProperties.MaskType;
-            if (maskType == PlayerMaterial.MaskType.SimpleUI || maskType == PlayerMaterial.MaskType.ScrollingUI)
+            if (maskType == PlayerMaterial.MaskType.ComplexUI || maskType == PlayerMaterial.MaskType.ScrollingUI)
             {
                 visor.Image.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
                 return;
+            }
+            if (maskType == PlayerMaterial.MaskType.SimpleUI)
+            {
+                visor.Image.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
             }
             if (maskType == PlayerMaterial.MaskType.Exile)
             {
@@ -272,11 +277,11 @@ namespace MouthwashClient.Patches.Lobby
             else
             {
                 bubble.Player.cosmetics.hat.UnloadAsset();
-                bubble.Player.cosmetics.hat.hatDataAsset = bubble.Player.cosmetics.hat.Hat.CreateAddressableAsset();
-                bubble.Player.cosmetics.hat.hatDataAsset.LoadAsync(new Action(delegate
+                bubble.Player.cosmetics.hat.viewAsset = bubble.Player.cosmetics.hat.Hat.CreateAddressableAsset();
+                bubble.Player.cosmetics.hat.viewAsset.LoadAsync(new Action(delegate
                 {
-                    bubble.Player.cosmetics.hat.PopulateFromHatViewData();
-                    CosmeticLoadPatches.UpdateHatMaterial(bubble.Player.cosmetics.hat, bubble.Player.cosmetics.hat.hatDataAsset.GetAsset(), true, chatMessage.Appearance.FrontColor,
+                    bubble.Player.cosmetics.hat.PopulateFromViewData();
+                    CosmeticLoadPatches.UpdateHatMaterial(bubble.Player.cosmetics.hat, bubble.Player.cosmetics.hat.viewAsset.GetAsset(), true, chatMessage.Appearance.FrontColor,
                         chatMessage.Appearance.BackColor, chatMessage.Appearance.VisorColor);
                 }));
             }
@@ -308,7 +313,7 @@ namespace MouthwashClient.Patches.Lobby
         {
             // Reconstructed from: VisorLayer.cs
             VisorData foundVisor = DestroyableSingleton<HatManager>.Instance.GetVisorById(chatMessage.Appearance.PlayerVisor);
-            bubble.Player.cosmetics.visor.currentVisor = foundVisor;
+            bubble.Player.cosmetics.visor.visorData = foundVisor;
             bubble.Player.cosmetics.visor.UnloadAsset();
             AddressableAssetGroup item = AddressableAssetHandler.GetOrCreate(bubble.Player.cosmetics.skin.gameObject).Item2;
             AddressableAsset<VisorViewData> asset = foundVisor.CreateAddressableAsset();

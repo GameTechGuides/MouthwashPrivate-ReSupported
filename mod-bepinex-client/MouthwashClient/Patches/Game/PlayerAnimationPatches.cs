@@ -157,8 +157,8 @@ namespace MouthwashClient.Patches.Game
                 new Color(backColor.r, backColor.g, backColor.b, currentState.HatOpacity);
             player.cosmetics.hat.FrontLayer.color =
                 new Color(frontColor.r, frontColor.g, frontColor.b, currentState.HatOpacity);
-            Color petColor = player.cosmetics.CurrentPet.rend.color;
-            player.cosmetics.CurrentPet.rend.color =
+              Color petColor = player.cosmetics.CurrentPet.renderers[0].color;
+              player.cosmetics.CurrentPet.renderers[0].color =
                 new Color(petColor.r, petColor.g, petColor.b, currentState.PetOpacity);
             Color skinColor = player.cosmetics.skin.layer.color;
             player.cosmetics.skin.layer.color =
@@ -289,8 +289,8 @@ namespace MouthwashClient.Patches.Game
 
                 if (keyframe.IsPropertyEnabled(KeyframeEnabledProperties.PetOpacity))
                 {
-                    Color petColor = player.cosmetics.CurrentPet.rend.color;
-                    player.cosmetics.CurrentPet.rend.color =
+                    Color petColor = player.cosmetics.CurrentPet.renderers[0].color;
+                    player.cosmetics.CurrentPet.renderers[0].color =
                         new Color(petColor.r, petColor.g, petColor.b, keyframe.PetOpacity);
                 }
 
@@ -355,12 +355,12 @@ namespace MouthwashClient.Patches.Game
             }
         }
         
-        public static PlayerControl? GetPlayerControlById(byte playerId)
+        public static PlayerControl GetPlayerControlById(byte playerId)
         {
-            foreach (PlayerControl pc in PlayerControl.AllPlayerControls)
-                if (pc.PlayerId == playerId) return pc;
+            foreach (var player in PlayerControl.AllPlayerControls)
+                if (player.PlayerId == playerId) return player;
 
-            return null;
+                return null;
         }
         
         [HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.Update))]

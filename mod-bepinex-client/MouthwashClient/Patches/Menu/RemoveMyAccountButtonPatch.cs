@@ -9,7 +9,7 @@ namespace MouthwashClient.Patches.Menu
     {
         public static void Postfix(MainMenuManager __instance)
         {
-            PluginSingleton<MouthwashClientPlugin>.Instance.Log.LogInfo("Removing my account button..");
+            PluginSingleton<MouthwashClientPlugin>.Instance.Log.LogInfo("Removing my Vanilla account button..");
             if (__instance.myAccountButton.gameObject != null)
             {
                 __instance.mainButtons.Remove(__instance.myAccountButton);

@@ -151,7 +151,7 @@ namespace MouthwashClient.Patches.Dump
             {
                 type = "HAT",
                 product_id = hatData.ProductId,
-                use_player_color = hatViewData.AltShader && hatViewData.AltShader.name == DestroyableSingleton<HatManager>.Instance.PlayerMaterial.name,
+                use_player_color = hatViewData.MatchPlayerColor && hatViewData.MatchPlayerColor.ToString() == DestroyableSingleton<HatManager>.Instance.PlayerMaterial.name,
                 in_front = hatData.InFront,
                 chip_offset = new AssetInfoVec2{ x = hatData.ChipOffset.x, y = hatData.ChipOffset.y },
                 main = hatViewData.MainImage == null ? null : new AssetFileReference{ file = "main.png", pivot = { x = hatViewData.MainImage.pivot.x, y = hatViewData.MainImage.pivot.y } },

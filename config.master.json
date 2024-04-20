@@ -39,12 +39,12 @@
         },
         "hbplugin-mouthwashgg-master": true,
         "hbplugin-mouthwashgg": true,
-        "hbplugin-mouthwashgg-anti-cheat": false,
-        "hbplugin-mouthwashgg-api": false,
-        "hbplugin-mouthwashgg-metrics": false,
-        "hbplugin-mwgg-gamemode-hns": false,
-        "hbplugin-mwgg-gamemode-town-of-polus": false,
-        "hbplugin-mwgg-gamemode-vanilla": false
+        "hbplugin-mouthwashgg-anti-cheat": true,
+        "hbplugin-mouthwashgg-api": true,
+        "hbplugin-mouthwashgg-metrics": true,
+        "hbplugin-mwgg-gamemode-hns": true,
+        "hbplugin-mwgg-gamemode-town-of-polus": true,
+        "hbplugin-mwgg-gamemode-vanilla": true
     },
     "anticheat": {
         "penalty": {
@@ -96,8 +96,8 @@
             "unknownObjects": false
         },
         "serverPlayer": {
-            "name": "<color=yellow>[Server]</color>",
-            "color": "Yellow",
+            "name": "<color=blue>[Server]</color>",
+            "color": "Blue",
             "hat": 0,
             "skin": 0
         },

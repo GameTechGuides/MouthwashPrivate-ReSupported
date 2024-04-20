@@ -49,10 +49,10 @@ namespace MouthwashClient.Patches.Game
 
         private static IEnumerator? _showIntroCoroutine;
         
-        [HarmonyPatch(typeof(HudManager._CoShowIntro_d__86), nameof(HudManager._CoShowIntro_d__86.MoveNext))]
+        [HarmonyPatch(typeof(HudManager._CoShowIntro_d__87), nameof(HudManager._CoShowIntro_d__87.MoveNext))]
         public static class CustomIntroCheckPatch
         {
-            public static bool Prefix(HudManager._CoShowIntro_d__86 __instance, ref bool __result)
+            public static bool Prefix(HudManager._CoShowIntro_d__87 __instance, ref bool __result)
             {
                 __result = false;
                 if (!HasReceivedIntroInformation) // don't show intro if we haven't received intro information yet
@@ -228,7 +228,8 @@ namespace MouthwashClient.Patches.Game
             SabotageSystemType? sabotageSystem = system.TryCast<SabotageSystemType>();
             if (sabotageSystem != null)
             {
-                sabotageSystem.ForceSabTime(10f);
+                
+                sabotageSystem.Timer = 10f;
             }
             yield return new CoroutineManager.Il2CppEnumeratorWrapper(ShipStatus.Instance.PrespawnStep());
             PlayerControl.LocalPlayer.AdjustLighting();

@@ -13,7 +13,7 @@ namespace MouthwashClient.Patches.OnlinePlay
             TabButton? cubesTab = null;
             foreach (TabButton button in __instance.Tabs)
             {
-                if (button.Button.transform.parent.parent.gameObject.name == "CubesTab")
+                if (button.Button.transform.parent.gameObject.name == "CubesTab")
                 {
                     cubesTab = button;
                     Object.Destroy(button.Button.transform.parent.parent.gameObject);

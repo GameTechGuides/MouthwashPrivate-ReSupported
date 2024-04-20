@@ -39,10 +39,10 @@ namespace MouthwashClient.Patches.OnlinePlay
             }
         }
 
-        [HarmonyPatch(typeof(PlayerControl._Start_d__95), nameof(PlayerControl._Start_d__95.MoveNext))]
+        [HarmonyPatch(typeof(PlayerControl._Start_d__105), nameof(PlayerControl._Start_d__105.MoveNext))]
         public static class DisablePlayerControlLoadInitialCosmeticsPatch
         {
-            public static bool Prefix(PlayerControl._Start_d__95 __instance, ref bool __result)
+            public static bool Prefix(PlayerControl._Start_d__105 __instance, ref bool __result)
             {
                 __result = false;
                 __instance.__4__this.StartCoroutine(PlayerControlStart(__instance.__4__this));
