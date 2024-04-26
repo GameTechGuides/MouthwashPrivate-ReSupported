@@ -4,11 +4,11 @@ export default {
     theme: {
         colors: {
             ...colors,
-            "base-300": "#050008",
-            "base-200": "#09010e",
+            "base-300": "#0000FF",
+            "base-200": "#FFFF00",
             "base-100": "#140320",
 
-            "surface-300": "#0c0213",
+            "surface-300": "#FDDA0D",
             "surface-200": "#160124",
             "surface-100": "#27063e",
 
@@ -16,7 +16,7 @@ export default {
             "card-200": "#562b75",
             "card-300": "#521180",
 
-            "text-100": "#eed7ff",
+            "text-100": "#FDDA0D",
             "text-200": "#e4c8f9",
             "text-300": "#806593",
 

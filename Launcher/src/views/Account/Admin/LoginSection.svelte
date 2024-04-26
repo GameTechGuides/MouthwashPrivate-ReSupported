@@ -39,8 +39,8 @@
             try {
                 const json = await loginResponse.json();
                 if (json.code === "INVALID_BODY") {
-                    const badEmail = json.details.find(detail => detail.path.length === 1 && detail.path[0] === "email");
-                    const badPassword = json.details.find(detail => detail.path.length === 1 && detail.path[0] === "password");
+                    const badEmail = json.details.find((detail: { path: string[], code: string }) => detail.path.length === 1 && detail.path[0] === "email");
+                    const badPassword = json.details.find((detail: { path: string[], code: string }) => detail.path.length === 1 && detail.path[0] === "password");
                     if (badEmail) {
                         erroredInputs.add("email");
                         if (badEmail.code === "missing") {
@@ -252,10 +252,11 @@
                 const json = await sendResetPasswordResponse.json();
                 console.error("Failed to reset password", json);
                 if (json.code === "INVALID_BODY") {
-                    const badEmail = json.details.find(detail => detail.path.length === 1 && detail.path[0] === "email");
-                    const badResetId = json.details.find(detail => detail.path.length === 1 && detail.path[0] === "reset_id");
-                    const badResetCode = json.details.find(detail => detail.path.length === 1 && detail.path[0] === "reset_code");
-                    const badNewPassword = json.details.find(detail => detail.path.length === 1 && detail.path[0] === "new_password");
+                    const badEmail = json.details.find((detail: { path: string | any[]; }) => detail.path.length === 1 && detail.path[0] === "email");
+                   
+                    const badResetId = json.details.find((detail: { path: string | any[]; }) => detail.path.length === 1 && detail.path[0] === "reset_id");
+                    const badResetCode = json.details.find((detail: { path: string | any[]; }) => detail.path.length === 1 && detail.path[0] === "reset_code");
+                    const badNewPassword = json.details.find((detail: { path: string | any[]; }) => detail.path.length === 1 && detail.path[0] === "new_password");
                     if (badResetId) {
                         resetPasswordErrorMessages.push("There was an error while submitting the password reset. Please try again later or contact support.");
                         return;

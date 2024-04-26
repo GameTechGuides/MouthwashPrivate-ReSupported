@@ -9,7 +9,7 @@
             <div class="flex flex-col items-start gap-2">
                 <span class="text-xl">Install Instructions</span>
                 <p class="text-text-300 text-left text-sm">
-                    The Polus.GG: Rewritten launcher should have started its download now. If not, refresh the page
+                    The TownOfUs ReImagined launcher should have started its download now. If not, refresh the page
                     and try again.
                 </p>
             </div>

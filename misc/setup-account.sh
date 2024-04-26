@@ -11,7 +11,7 @@ echo 'server {
 
     location /v2/ {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_pass http://localhost:8000/;
+        proxy_pass https://urban-space-fortnight-jjr4gjwpjpr63p9r9-8000.app.github.dev;
     }
 }' > /etc/nginx/sites-enabled/accounts
 service nginx restart

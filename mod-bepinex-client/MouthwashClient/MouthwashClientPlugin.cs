@@ -12,14 +12,14 @@ using UnityEngine;
 
 namespace MouthwashClient
 {
-    [BepInPlugin(Id, "Polus.GG: Rewritten", VersionString)]
+    [BepInPlugin(Id, "Polus.GG: Rewritten-worked", VersionString)]
     [BepInProcess("Among Us.exe")]
     [BepInDependency(ReactorPlugin.Id)]
     public partial class MouthwashClientPlugin : BasePlugin
     {
         public Harmony Harmony { get; } = new(Id);
         public const string Id = "gg.polus.rewritten";
-        public const string VersionString = "2.0.0";
+        public const string VersionString = "3.0.0";
 
         public ConfigEntry<string> ConfigName { get; private set; }
 
@@ -33,7 +33,7 @@ namespace MouthwashClient
 
             runtimeConfig = RuntimeConfigurationService.GetRuntimeConfiguration() ?? new RuntimeConfiguration()
             {
-                AccountsUrl = "http://localhost:8000",
+                AccountsUrl = "https://urban-space-fortnight-jjr4gjwpjpr63p9r9-8000.app.github.dev",
                 ServerRegions = new RuntimeConfigurationServerRegion[]
                 {
                     new()
