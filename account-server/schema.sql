@@ -1,3 +1,4 @@
+-- Active: 1713709353971@@aws-0-us-east-1.pooler.supabase.com@5432@postgres
 create table users
 (
     id             uuid    not null

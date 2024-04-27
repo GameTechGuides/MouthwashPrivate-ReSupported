@@ -6,13 +6,13 @@
 
 <style windi:preflights:global windi:safelist:global>
     :global(html, body, #app) {
-        background-color: #0c0213;
+        background-color: #00FFFFFF;
         margin: 0;
         padding: 0;
         width: 100vw;
         height: 100vh;
-        font-family: "Josefin Sans", sans-serif;
-        color: #e4c8f9;
+        font-family: "Porky", sans-serif;
+        color: #355E3B;
     }
 
     :global(#app) {

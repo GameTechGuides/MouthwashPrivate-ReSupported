@@ -25,7 +25,7 @@
     let accountTabView: AccountView|undefined = undefined;
 
     const requiredFiles = [ "Among Us_Data", "Among Us_Data/il2cpp_data", "BepInEx", "BepInEx/core", "BepInEx/plugins/Polus.dll", "BepInEx/plugins/PolusggSlim.dll",
-        "mono", "mono/Managed", "mono/MonoBleedingEdge", "Among Us.exe", "baselib.dll", "doorstop_config.ini", "GameAssembly.dll", "UnityPlayer.dll", "winhttp.dll" ];
+        "dotnet", "Among Us.exe", "baselib.dll", "doorstop_config.ini", "GameAssembly.dll", "UnityPlayer.dll", "winhttp.dll" ];
     async function checkInstallationPath(installationPath: string) {
         // for (const requiredFile of requiredFiles) {
         //     if (!await fs.exists(await path.join(installationPath, requiredFile))) {
@@ -39,7 +39,7 @@
 
     async function getRemoteLatestVersion() {
         try {
-            const changelogRes = await fetch("https://jhwupengaqaqjewreahz.supabase.co/storage/v1/object/public/Downloads/changelog.json");
+            const changelogRes = await fetch("https://ndekzjeeffavjzlmmupt.supabase.co/storage/v1/object/public/Downloads/changelog.json");
 
             if (!changelogRes.ok) {
                 gameRemoteVersionState.set(new Error("Could not get latest version, contact support. Status: " + changelogRes.status));

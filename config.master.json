@@ -35,7 +35,7 @@
     "plugins": {
         "loadDirectory": true,
         "hbplugin-mouthwashgg-auth": {
-            "baseUrl": "http://localhost:8000"
+            "baseUrl": "https://urban-space-fortnight-jjr4gjwpjpr63p9r9-8000.app.github.dev"
         },
         "hbplugin-mouthwashgg-master": true,
         "hbplugin-mouthwashgg": true,
