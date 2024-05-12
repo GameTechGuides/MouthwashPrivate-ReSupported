@@ -1,8 +1,8 @@
 name: CI
 
 on:
-  push:
-    tags: [ release/launcher/* ]
+   push:
+    branches: [ "master" ]
 
 jobs:
   publish-release:
